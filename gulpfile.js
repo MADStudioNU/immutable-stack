@@ -5,7 +5,6 @@ var gulp        = require('gulp')
   , source      = require('vinyl-source-stream')
   , buffer      = require('vinyl-buffer')
   , karma       = require('karma')
-  , $           = require('gulp-load-plugins')()
   , extend      = require('object-extend')
   , del         = require('del')
 
@@ -84,12 +83,8 @@ gulp.task('bundle:test:watch', function () {
   bundle()
 })
 
-gulp.task('clean', function () {
-  return del('dist')
-})
-
-gulp.task('bundle', [ 'bundle:src', 'bundle:test' ])
-gulp.task('bundle:watch', [ 'bundle:src:watch', 'bundle:test:watch' ])
+gulp.task('bundle', [ 'bundle:test', 'bundle:src' ])
+gulp.task('bundle:watch', [ 'bundle:test:watch', 'bundle:src:watch' ])
 
 gulp.task('tdd', [ 'bundle:watch' ], function (done) {
   var server = karmaServer(done)
@@ -105,7 +100,7 @@ gulp.task('test', [ 'bundle' ], function (done) {
   return server.start()
 })
 
-gulp.task('test:travis', [ 'bundle' ], function (done) {
+gulp.task('test:travis', [ 'bundle:test' ], function (done) {
   var server = karmaServer(done, {
     singleRun: true,
     browsers : [ 'Firefox', 'PhantomJS' ]
