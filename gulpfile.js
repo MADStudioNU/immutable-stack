@@ -83,8 +83,12 @@ gulp.task('bundle:test:watch', function () {
   bundle()
 })
 
-gulp.task('bundle', [ 'bundle:test', 'bundle:src' ])
-gulp.task('bundle:watch', [ 'bundle:test:watch', 'bundle:src:watch' ])
+gulp.task('clean', function () {
+  return del('dist')
+})
+
+gulp.task('bundle', [ 'bundle:src', 'bundle:test' ])
+gulp.task('bundle:watch', [ 'bundle:src:watch', 'bundle:test:watch' ])
 
 gulp.task('tdd', [ 'bundle:watch' ], function (done) {
   var server = karmaServer(done)
