@@ -1,5 +1,5 @@
 ## Immutable Stack
-
+[![Build Status](https://travis-ci.org/mmlc/immutable-stack.svg?branch=master)](https://travis-ci.org/mmlc/immutable-stack)
 An array-wrapper that provides immutable `push` and `pop` operations.
 
 ### Author
