@@ -68,7 +68,7 @@ gulp.task('bundle:test', function () {
 
   var bundle = bundler(b, 'immutable-stack.spec.js', 'dist/tests')
 
-  bundle()
+  return bundle()
 })
 
 gulp.task('bundle:test:watch', function () {
@@ -87,8 +87,14 @@ gulp.task('clean', function () {
   return del('dist')
 })
 
-gulp.task('bundle', [ 'bundle:src', 'bundle:test' ])
-gulp.task('bundle:watch', [ 'bundle:src:watch', 'bundle:test:watch' ])
+function gulpThen (nexts) {
+  return function () {
+    return gulp.start(nexts)
+  }
+}
+
+gulp.task('bundle', ['clean'], gulpThen([ 'bundle:test', 'bundle:src' ]))
+gulp.task('bundle:watch', ['clean'], gulpThen([ 'bundle:test:watch', 'bundle:src:watch' ]))
 
 gulp.task('tdd', [ 'bundle:watch' ], function (done) {
   var server = karmaServer(done)

@@ -19,7 +19,7 @@ describe('ImmutableStack', function () {
     expect(a).toEqual([ 1, 2, 3 ])
   })
 
-  it('has immutable copy', function () {
+  it('#stack() creates an immutable copy', function () {
     var messages = ImmutableStack()
     var mStack   = messages.stack()
 
@@ -57,6 +57,8 @@ describe('ImmutableStack', function () {
 
     expect(newMessages.stack()).toEqual(nStack)
 
-    expect(messages.stack()).toEqual(newMessages.pop().pop().pop().stack())
+    var poppedStack = newMessages.pop().pop().pop().stack()
+
+    expect(messages.stack()).toEqual(poppedStack)
   })
 })
