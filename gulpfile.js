@@ -104,3 +104,12 @@ gulp.task('test', [ 'bundle' ], function (done) {
 
   return server.start()
 })
+
+gulp.task('test:travis', [ 'bundle' ], function (done) {
+  var server = karmaServer(done, {
+    singleRun: true,
+    browsers : [ 'Firefox', 'PhantomJS' ]
+  })
+
+  return server.start()
+})
