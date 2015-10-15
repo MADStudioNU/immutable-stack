@@ -36,3 +36,10 @@ moreItems.pop()   // => ImmutableStack [ 1, 2, 3, 4, 5, 6 ]
 // But it would be possible to build it in
 
 ```
+
+## Next
+
+Either
+
+  1. Write a new `ImmutableStack#pop()` with signature `() -> [ t, ImmutableStack t ]`
+  2. Write `ImmutableStack#peek()` for non-destructively getting the head of an ImmutableStack
