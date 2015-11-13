@@ -10,7 +10,7 @@ function immutableStackUpdate (stack, method, args) {
   return ImmutableStack(newStack)
 }
 
-var ImmutableStackUpdater = Classy(1, function (self, stack) {
+var ImmutableStackUpdater = Classy(function (self, stack) {
   self.push = function () {
     return immutableStackUpdate(stack, 'push', [].slice.call(arguments))
   }

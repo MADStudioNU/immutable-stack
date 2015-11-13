@@ -1,6 +1,6 @@
 {
   "name": "immutable-stack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stack object supporting immutable push and pop operations.",
   "main": "src",
   "directories": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/mmlc/immutable-stack#readme",
   "dependencies": {
-    "classy-js": "^1.0.8"
+    "classy-js": "^2.0.4"
   },
   "devDependencies": {
     "browserify": "^11.2.0",
